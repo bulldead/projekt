@@ -6,16 +6,26 @@
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush>
+            <ImageBrush.ImageSource>
+                <BitmapImage UriSource="file:///D:\Egyetem\projekt_1\projekt\Projekt\picture/kezdo.gif"/>
+            </ImageBrush.ImageSource>
+        </ImageBrush>
+    </Window.Background>
     <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35*"/>
             <ColumnDefinition Width="97*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="91,39,0,0" VerticalAlignment="Top" Width="75" Click="Connect_Click" AutomationProperties.Name="Disconnect"/>
-        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="91,214,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Exit" Click="Exit_Click"/>
-        <Button x:Name="Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="91,79,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Disconnect" Click="Disconnect_Click"/>
-        <Button x:Name="Shut_Down" Content="Shut Down" HorizontalAlignment="Left" Margin="91,152,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Shut Down" Click="Shut_Down_Click"/>
-        <TextBox x:Name="Connect_test" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="101,39,0,0" TextWrapping="Wrap" Text="Not Connected" VerticalAlignment="Top" Width="120" AutomationProperties.Name="Connect_test"/>
+        <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="91,39,0,0" VerticalAlignment="Top" Width="75" Click="Connect_Click" AutomationProperties.Name="Disconnect" Background="Black" Foreground="White" BorderBrush="Red"/>
+        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="91,214,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
+        <Button x:Name="Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="91,79,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Disconnect" Click="Disconnect_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
+        <Button x:Name="Shut_Down" Content="Shut Down" HorizontalAlignment="Left" Margin="91,152,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Shut Down" Click="Shut_Down_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
+        <Button x:Name="Play" Content="Play" HorizontalAlignment="Left" Margin="91,114,0,0" VerticalAlignment="Top" Width="75" Background="Black" Foreground="White" BorderBrush="Red" Click="Play_Click"/>
 
     </Grid>
 </Window>

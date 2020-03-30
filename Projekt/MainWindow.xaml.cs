@@ -25,6 +25,7 @@ namespace Projekt
         HubConnection connection;
         public MainWindow()
         {
+
             InitializeComponent();
             connection = new HubConnectionBuilder()
                 .WithUrl("https://kopernikus20200210091600.azurewebsites.net/ship")//giving the connection the URL
@@ -39,19 +40,22 @@ namespace Projekt
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-
-            connection.On<string>("Connected", (connectionid) => {
+            Connect c = new Connect();
+            c.Show();
+            this.Close();
+            
+            /*connection.On<string>("Connected", (connectionid) => {
                 //Connection check 
                 Connect_test.Text = connectionid;
             });
-            Connect_test.Text = "Failed";//temporary testing if button works
+            Connect_test.Text = "Failed";//temporary testing if button works*/
 
             ;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Shut_Down_Click(object sender, RoutedEventArgs e)
@@ -61,7 +65,14 @@ namespace Projekt
 
         private void Disconnect_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("ön lecsatlakozott a szerverről.");
+        }
 
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+            game g = new game();
+            g.Show();
+            this.Close();
         }
     }
 }

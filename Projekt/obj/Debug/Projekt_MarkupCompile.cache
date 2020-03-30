@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projekt\Projekt\obj\Debug\
+D:\Egyetem\projekt_1\projekt\Projekt\obj\Debug\
 Projekt
 none
 false
 DEBUG;TRACE
-D:\Projekt\Projekt\App.xaml
-11151548125
+D:\Egyetem\projekt_1\projekt\Projekt\App.xaml
+3-462238712
 
-8-1980728640
-48750286731
-MainWindow.xaml;
+101019228728
+48409954124
+Connect.xaml;Game.xaml;MainWindow.xaml;
 
 False
 
