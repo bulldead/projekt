@@ -9,7 +9,7 @@
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <BitmapImage UriSource="file:///D:\Egyetem\projekt_1\projekt\Projekt\picture/kezdo.gif"/>
+                <BitmapImage UriSource="/Images/start.gif"/>                
             </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>

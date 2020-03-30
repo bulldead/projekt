@@ -43,14 +43,14 @@ namespace Projekt
             Connect c = new Connect();
             c.Show();
             this.Close();
-            
-            /*connection.On<string>("Connected", (connectionid) => {
-                //Connection check 
-                Connect_test.Text = connectionid;
-            });
-            Connect_test.Text = "Failed";//temporary testing if button works*/
 
-            ;
+            //connection.On<string>("Connected", (connectionid) => {
+            //    //Connection check 
+            //    Connect_test.Text = connectionid;
+            //});
+            //Connect_test.Text = "Failed";//temporary testing if button works
+
+
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
