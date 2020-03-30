@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.AspNet.SignalR.Client;
-
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Projekt
 {
@@ -23,21 +22,31 @@ namespace Projekt
     public partial class MainWindow : Window
     {
         //server connection variable
-        private HubConnection _connection;
+        HubConnection connection;
         public MainWindow()
         {
             InitializeComponent();
-            _connection = new HubConnection("https://kopernikus20200210091600.azurewebsites.net/ship"); //giving the connection the URL
-            await connection.Start();  
-               
+            connection = new HubConnectionBuilder()
+                .WithUrl("https://kopernikus20200210091600.azurewebsites.net/ship")//giving the connection the URL
+                .Build();
+            connection.Closed += async (error) =>
+            {
+                await Task.Delay(new Random().Next(0, 5) * 1000);
+                await connection.StartAsync();
+            };
+
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            _connection.On<string>("Connected",(connectionid) =>
-            (//Connection check 
-            tbMain.Text = connectionid
-                ));
+
+            connection.On<string>("Connected", (connectionid) => {
+                //Connection check 
+                Connect_test.Text = connectionid;
+            });
+            Connect_test.Text = "Failed";//temporary testing if button works
+
+            ;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
