@@ -25,31 +25,32 @@ namespace Projekt
         HubConnection connection;
         public MainWindow()
         {
-
             InitializeComponent();
             connection = new HubConnectionBuilder()
                 .WithUrl("https://kopernikus20200210091600.azurewebsites.net/ship")//giving the connection the URL
-                .Build();
+                 .Build();
             connection.Closed += async (error) =>
             {
                 await Task.Delay(new Random().Next(0, 5) * 1000);
                 await connection.StartAsync();
             };
+            //Connection Check
+            if (connection.State == HubConnectionState.Connected)
+            {
+                connect_test.Text = "Connected";
+            }
+            else
+                connect_test.Text = "NOT Connected";
 
         }
 
-        private void Connect_Click(object sender, RoutedEventArgs e)
+        private  void Connect_Click(object sender, RoutedEventArgs e)
         {
+
+
             Connect c = new Connect();
             c.Show();
             this.Close();
-
-            //connection.On<string>("Connected", (connectionid) => {
-            //    //Connection check 
-            //    Connect_test.Text = connectionid;
-            //});
-            //Connect_test.Text = "Failed";//temporary testing if button works
-
 
         }
 

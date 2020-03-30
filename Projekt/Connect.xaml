@@ -22,7 +22,7 @@
         <Border BorderThickness="3" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Top" Margin="0" >
 
             <StackPanel Width="300" Height="150">
-                <Label Content="Ön sikeresen csatlakozott a szerverhez!!" Margin="0,30,0,0" Foreground="White" HorizontalAlignment="Center"/>
+                <Label x:Name="Connect_Label" Content="Ön sikeresen csatlakozott a szerverhez!!" Margin="0,30,0,0" Foreground="White" HorizontalAlignment="Center" AutomationProperties.Name="Connect_Label"/>
                 <Label Content="A folytatáshoz kérem nyomjon az OK gombra!!" Foreground="White" HorizontalAlignment="Center"/>
                 <Button x:Name="OK" Content="OK" Margin="90,15,90,0" Click="Button_Click_1" Foreground="White" BorderBrush="Red">
                     <Button.Background>

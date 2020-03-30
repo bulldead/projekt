@@ -9,7 +9,7 @@
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <BitmapImage UriSource="/Images/start.gif"/>                
+                <BitmapImage UriSource="/Images/start.gif"/>
             </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
@@ -26,6 +26,7 @@
         <Button x:Name="Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="91,79,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Disconnect" Click="Disconnect_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
         <Button x:Name="Shut_Down" Content="Shut Down" HorizontalAlignment="Left" Margin="91,152,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Shut Down" Click="Shut_Down_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
         <Button x:Name="Play" Content="Play" HorizontalAlignment="Left" Margin="91,114,0,0" VerticalAlignment="Top" Width="75" Background="Black" Foreground="White" BorderBrush="Red" Click="Play_Click"/>
+        <TextBlock x:Name="connect_test" Grid.Column="1" HorizontalAlignment="Left" Margin="161,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="178" Width="374" FontSize="36" Foreground="#FFFF0E0E" AutomationProperties.Name="connect_test"><Run Background="White" Text="TextBlock"/></TextBlock>
 
     </Grid>
 </Window>
