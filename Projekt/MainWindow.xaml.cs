@@ -35,22 +35,33 @@ namespace Projekt
                 await connection.StartAsync();
             };
             //Connection Check
-            if (connection.State == HubConnectionState.Connected)
-            {
-                connect_test.Text = "Connected";
-            }
-            else
-                connect_test.Text = "NOT Connected";
+
 
         }
 
-        private  void Connect_Click(object sender, RoutedEventArgs e)
+
+        private async void Connect_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                await connection.StartAsync();
+                connect_test.Text=("Connection started");
+                Connect.IsEnabled = false;
+                if (connection.State == HubConnectionState.Connected)
+                {
+                    connect_test.Text = "Connected";
+                }
+                else
+                    connect_test.Text = "NOT Connected";
+            }
+            catch (Exception ex)
+            {
+                connect_test.Text = (ex.Message);
+            }
 
-
-            Connect c = new Connect();
-            c.Show();
-            this.Close();
+            //Connect c = new Connect();
+            //c.Show();
+            //this.Close();
 
         }
 
