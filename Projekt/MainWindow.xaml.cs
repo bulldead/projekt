@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.AspNetCore.SignalR.Client;
+using System.Threading;
+
 
 namespace Projekt
 {
@@ -22,73 +25,50 @@ namespace Projekt
     public partial class MainWindow : Window
     {
         //server connection variable
-        HubConnection connection;
+        
         public MainWindow()
         {
             InitializeComponent();
-            connection = new HubConnectionBuilder()
-                .WithUrl("https://kopernikus20200210091600.azurewebsites.net/ship")//giving the connection the URL
-                 .Build();
-            connection.Closed += async (error) =>
-            {
-                await Task.Delay(new Random().Next(0, 5) * 1000);
-                await connection.StartAsync();
-            };            
+            counter();
             connect_test.Text = "";
         }
-        private async void Connect_Click(object sender, RoutedEventArgs e)
-        {            
-            try
-            {
-                await connection.StartAsync();
-                connect_test.Text="Connection started";
-                Connect.IsEnabled = false;
-                
-                //connection Checking
-                if (connection.State == HubConnectionState.Connected)
-                {
-                    connect_test.Text = "Connected";
-                    //new window open
-                    Connect c = new Connect();
-                    c.Show();
-                    this.Close();
-                }
-                else
-                    connect_test.Text = "";
-                
-            }
-            //If couldnt connect, exception msg int he text block
-            catch (Exception ex)
-            {
-                connect_test.Text = (ex.Message);
-            }
-
-            //Connect c = new Connect();
-            //c.Show();
-            //this.Close();
-
+        private void Connect_Click(object sender, RoutedEventArgs e)
+        {
+            connect_test.Text = "";
+            Connect.IsEnabled = false;
+            connect_test.Text = "Connecting to server. Please wait.";
+            
+            Game gamewindow = new Game();
+            gamewindow.Show();
+            this.Close();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        private void Shut_Down_Click(object sender, RoutedEventArgs e)
+        private void counter()
         {
+            var path = "counts.txt";
+            int counter;
+
+            string counter1 = File.ReadAllText("counts.txt");
+
+           
+            counter = Convert.ToInt32(counter1);
+            counter++;
+            counting.Text = "Tests run: "+ Convert.ToString(counter) + ", and still counting...";
+
+            using (FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                using (var tofile = new StreamWriter(fs))
+                {
+                    tofile.WriteLine(counter.ToString());
+                    tofile.Close();
+                }
+            }
 
         }
-
-        private void Disconnect_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("ön lecsatlakozott a szerverről.");
-        }
-
-        private void Play_Click(object sender, RoutedEventArgs e)
-        {
-            game g = new game();
-            g.Show();
-            this.Close();
-        }
+        
     }
 }

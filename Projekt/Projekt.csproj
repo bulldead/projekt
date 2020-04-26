@@ -157,9 +157,9 @@
     <Compile Include="Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Player.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="User.cs" />
     <Page Include="Connect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
