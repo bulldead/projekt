@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.AspNetCore.SignalR.Client;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Media.Media3D;
 
 namespace Projekt
 {
@@ -24,13 +27,16 @@ namespace Projekt
     public partial class Game : Window
     {
         HubConnection myhub;
+        
         public Game()
         {
             InitializeComponent();
             kiirat.Text = "Waiting on server response.";
             connect();
+            usermake();            
+            shipmove();
             //kiiratas();
-            
+
         }
         private async void connect()
         {
@@ -92,5 +98,24 @@ namespace Projekt
                 }
             }
         }
+
+        private void shipmove()
+        {
+
+            //RotateTransform transform = FriendlyShip.RenderTransform as RotateTransform;
+            //transform.Angle = 90.0;
+            //FriendlyShip.RenderTransform = transform;
+
+        }
+        //private void Update(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        var args = new PropertyChangedEventArgs(propertyName);
+        //        PropertyChanged(this, args);
+        //    }
+        //}
+
+        //public event PropertyChangedEventHandler PropertyChanged;
     }
 }

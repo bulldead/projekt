@@ -30,7 +30,7 @@ namespace Projekt
         {
             InitializeComponent();
             counter();
-            connect_test.Text = "";
+            connect_test.Text = ""; 
         }
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
