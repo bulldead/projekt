@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Media.Media3D;
+using System.Windows.Media.Animation;
 
 namespace Projekt
 {
@@ -33,7 +34,8 @@ namespace Projekt
             InitializeComponent();
             kiirat.Text = "Waiting on server response.";
             connect();
-            usermake();            
+            usermake();
+            keringes();
             shipmove();
             //kiiratas();
 
@@ -105,6 +107,12 @@ namespace Projekt
             //RotateTransform transform = FriendlyShip.RenderTransform as RotateTransform;
             //transform.Angle = 90.0;
             //FriendlyShip.RenderTransform = transform;
+
+        }
+        private void keringes()
+        {
+            var sb = FindResource("ellipseSB") as Storyboard;
+            if (sb != null) sb.Begin();
 
         }
         //private void Update(string propertyName)

@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
         Title="Game" Height="900" Width="1600">
@@ -13,6 +15,37 @@
             </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:15.000">
+            <DoubleAnimation Storyboard.TargetName="FriendlyShip" 
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" 
+                             From="0" To="360" BeginTime="00:00:15.000" Duration="00:00:15.000" />
+            <DoubleAnimation Storyboard.TargetName="OpacityImage" 
+                             Storyboard.TargetProperty="Opacity" 
+                             From="1" To="0" Duration="00:00:15.000" />
+        </Storyboard>
+        <PathGeometry x:Key="path" Figures="M 772,333 A 200,200 0 1 1 772,332.99" />
+        <Storyboard x:Key="ellipseSB">
+            <DoubleAnimationUsingPath Storyboard.TargetName="FriendlyShip"
+                                      Storyboard.TargetProperty="(Canvas.Left)"
+                                      PathGeometry="{StaticResource path}"
+                                      Duration="0:0:15" RepeatBehavior="Forever"
+                                      AutoReverse="False" Source="X" />
+            <DoubleAnimationUsingPath Storyboard.TargetName="FriendlyShip"
+                                      Storyboard.TargetProperty="(Canvas.Top)"
+                                      PathGeometry="{StaticResource path}"
+                                      Duration="0:0:15" RepeatBehavior="Forever"
+                                      AutoReverse="False" Source="Y" />
+           <DoubleAnimation AutoReverse="False"                             
+                                     Duration="0:0:15"
+                                     From="180"
+                                     RepeatBehavior="Forever"
+                                     Storyboard.TargetName="FriendlyShip"
+                                     Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                     To="540" />
+        </Storyboard>
+
+    </Window.Resources>
     <Grid x:Name="Scoreboard" AutomationProperties.Name="Scoreboard">
         <TextBlock x:Name="kiirat" HorizontalAlignment="Left" Margin="600,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="600" AutomationProperties.Name="kiirat" Foreground="Red" FontSize="36"/>
         <TextBlock HorizontalAlignment="Left" Margin="1275,757,0,0" TextWrapping="Wrap" Text="Energy" VerticalAlignment="Top" FontSize="36" Height="57" Width="229" Foreground="#FF00DCFF"/>
@@ -42,14 +75,29 @@
         <TextBlock x:Name="Player9_Score" HorizontalAlignment="Left" Margin="1471,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player9_Score" Text="0"/>
         <TextBlock x:Name="Player10_Score" HorizontalAlignment="Left" Margin="1471,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player10_Score" Text="0"/>
         <Image x:Name="Planet" HorizontalAlignment="Left" Height="300" Margin="500,300,0,0" VerticalAlignment="Top" Width="400" Source="Images/planet.png"/>
+
+
         <Canvas x:Name="GameBack" HorizontalAlignment="Left" Height="779" Margin="80,65,0,0" VerticalAlignment="Top" Width="1170" AutomationProperties.Name="GameBack" RenderTransformOrigin="0.233,0.562">
-            <Ellipse Height="450" Width="450" Canvas.Top="166" Canvas.Left="382" Stroke="LightSlateGray" StrokeThickness="2" />
+            <!--<Ellipse x:Name="ellipse" Width="10" Height="10" Stroke="Black" Fill="Black"
+                     RenderTransformOrigin="0.5,0.5" Canvas.Left="606" Canvas.Top="168" />-->
+            <Image x:Name="FriendlyShip" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Source="Images/FriendlyShip.png" AutomationProperties.Name="FriendlyShip" Canvas.Left="772" Canvas.Top="333"
+                     RenderTransformOrigin="0.5,0.5">                
+                <Image.RenderTransform>
+                    <RotateTransform></RotateTransform>
+                </Image.RenderTransform>
+            </Image>
+            <Path Stroke="Red" StrokeThickness="1" Canvas.Left="50.5" Canvas.Top="53"
+                  Data="{StaticResource path}"/>
+            <!--<Ellipse Height="450" Width="450" Canvas.Top="166" Canvas.Left="382" Stroke="LightSlateGray" StrokeThickness="2" />
             <Image x:Name="FriendlyShip" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Source="Images/FriendlyShip.png" AutomationProperties.Name="FriendlyShip" Canvas.Left="565" Canvas.Top="333">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="157" CenterY="40" Angle="190" />
                 </Image.RenderTransform>
-            </Image>
+            </Image>-->
         </Canvas>
+        <!--<Button VerticalAlignment="Bottom" Content="Start" Click="Button_Click">
+        </Button>-->
+
 
 
     </Grid>
