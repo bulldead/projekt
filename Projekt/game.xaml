@@ -36,7 +36,7 @@
                                       PathGeometry="{StaticResource path}"
                                       Duration="0:0:15" RepeatBehavior="Forever"
                                       AutoReverse="False" Source="Y" />
-           <DoubleAnimation AutoReverse="False"                             
+            <DoubleAnimation AutoReverse="False"                             
                                      Duration="0:0:15"
                                      From="180"
                                      RepeatBehavior="Forever"
@@ -81,7 +81,7 @@
             <!--<Ellipse x:Name="ellipse" Width="10" Height="10" Stroke="Black" Fill="Black"
                      RenderTransformOrigin="0.5,0.5" Canvas.Left="606" Canvas.Top="168" />-->
             <Image x:Name="FriendlyShip" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Source="Images/FriendlyShip.png" AutomationProperties.Name="FriendlyShip" Canvas.Left="772" Canvas.Top="333"
-                     RenderTransformOrigin="0.5,0.5">                
+                     RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform></RotateTransform>
                 </Image.RenderTransform>
@@ -95,6 +95,7 @@
                 </Image.RenderTransform>
             </Image>-->
         </Canvas>
+        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="124" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red" Height="34"/>
         <!--<Button VerticalAlignment="Bottom" Content="Start" Click="Button_Click">
         </Button>-->
 

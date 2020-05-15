@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Projekt
 {
-    class Ship
+   public class Ship
     {
-    }
+		private int shoot;
+
+		public int Shoot
+		{
+			get { return shoot; }
+			set { shoot = value; }
+		}
+
+	}
 }
