@@ -158,8 +158,6 @@ D:\Egyetem\projekt_1\projekt\Projekt\obj\Debug\Connect.g.cs
 D:\Egyetem\projekt_1\projekt\Projekt\obj\Debug\Connect.baml
 D:\Egyetem\projekt_1\projekt\Projekt\obj\Debug\Game.g.cs
 D:\Egyetem\projekt_1\projekt\Projekt\obj\Debug\Game.baml
-D:\Projekt\Projekt\obj\Debug\Connect.g.cs
 D:\Projekt\Projekt\obj\Debug\Game.g.cs
-D:\Projekt\Projekt\obj\Debug\Connect.baml
 D:\Projekt\Projekt\obj\Debug\Game.baml
 D:\Projekt\Projekt\bin\Debug\System.Drawing.Common.dll

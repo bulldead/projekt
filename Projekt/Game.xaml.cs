@@ -24,7 +24,7 @@ namespace Projekt
     /// <summary>
     /// Interaction logic for Game.xaml
     /// </summary>
-   
+
     public partial class Game : Window
     {
         HubConnection myhub;
@@ -52,19 +52,20 @@ namespace Projekt
                 await Task.Delay(new Random().Next(0, 5) * 1000);
                 await myhub.StartAsync();
             };
-            
+
             try
-            {                
+            {
                 await myhub.StartAsync();
-                
-               
+
+
                 //connection Checking
                 if (myhub.State == HubConnectionState.Connected)
                 {
-                    kiirat.Text = "Connected";                   
+                    kiirat.Text = "Connected";
                 }
                 else
                     kiirat.Text = "";
+
             }
             //If couldnt connect, exception msg int he text block
             catch (Exception ex)
@@ -85,7 +86,7 @@ namespace Projekt
         //    }
         //}
         private async void usermake()
-        {   
+        {
             //User data
             User user = new User();
             user.Name = "Rikka";
@@ -107,7 +108,7 @@ namespace Projekt
             try
             {
                 //await myhub.InvokeAsync("user", userdata);
-                await myhub.SendAsync("user",userdata);
+                await myhub.SendAsync("user", userdata);
             }
             //Exception message if something went wrong.
             catch (Exception ex)
@@ -146,7 +147,7 @@ namespace Projekt
         }
         private void shipmove()
         {
-            
+
             //RotateTransform transform = FriendlyShip.RenderTransform as RotateTransform;
             //transform.Angle = 90.0;
             //FriendlyShip.RenderTransform = transform;
@@ -176,7 +177,7 @@ namespace Projekt
             string userdata_exit = Newtonsoft.Json.JsonConvert.SerializeObject(user);
             try
             {
-                await myhub.SendAsync("exit",userdata_exit);
+                await myhub.SendAsync("exit", userdata_exit);
             }
             //Exception message if something went wrong.
             catch (Exception ex)

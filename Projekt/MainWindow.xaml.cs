@@ -47,18 +47,16 @@ namespace Projekt
         {
             this.Close();
         }
+
         private void counter()
         {
+            //A counter for test runs, nothing to do with the project, only for my purpose
             var path = "counts.txt";
             int counter;
-
-            string counter1 = File.ReadAllText("counts.txt");
-
-           
+            string counter1 = File.ReadAllText("counts.txt");           
             counter = Convert.ToInt32(counter1);
             counter++;
             counting.Text = "Tests run: "+ Convert.ToString(counter) + ", and still counting...";
-
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 using (var tofile = new StreamWriter(fs))
@@ -67,8 +65,6 @@ namespace Projekt
                     tofile.Close();
                 }
             }
-
-        }
-        
+        }        
     }
 }
