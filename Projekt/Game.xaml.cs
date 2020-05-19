@@ -18,7 +18,10 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
+using System.Windows.Documents.DocumentStructures;
+
 namespace Projekt
+
 {
     /// <summary>
     /// Interaction logic for Game.xaml
@@ -33,11 +36,12 @@ namespace Projekt
             kiirat.Text = "Waiting on server response.";
             connect();
             usermake();
-            broadcast();
+            broadcast();            
             keringes();
+            shipmove();
             shoot();
-            //shipmove();
-            //kiiratas();
+            
+            
         }
         private async void connect()
         {
@@ -65,19 +69,7 @@ namespace Projekt
             {
                 kiirat.Text = (ex.Message);
             }
-        }
-        //private async void kiiratas()
-        //{
-        //    try
-        //    {
-        //        await myhub.
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //change it after
-        //        kiirat.Text = (ex.Message);
-        //    }
-        //}
+        }        
         private async void usermake()
         {
             //User data
@@ -137,16 +129,51 @@ namespace Projekt
                 });
             });
         }
-        private void shipmove()
+        private async void shipmove()
         {
-            //RotateTransform transform = FriendlyShip.RenderTransform as RotateTransform;
-            //transform.Angle = 90.0;
-            //FriendlyShip.RenderTransform = transform;
+
+            User user = new User();
+            user.PrivateId = 5201;
+            //move testing
+            //PathGeometry path = new PathGeometry();            
+            //Pathmove.SetValue(Canvas.LeftProperty,400.0);
+            //Pathmove.SetValue(Canvas.TopProperty, 40.0);
+
+            if (true)//Still need the event to work. On pressing button 'A' moves closer to the center
+            {
+                user.Orbit = 1;
+                string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+                try
+                {
+                    await myhub.SendAsync("orbit", userdata_move);
+                }
+                //Exception message if something went wrong.
+                catch (Exception ex)
+                {
+                    kiirat.Text = (ex.Message);
+                }
+            }            
+            
+            if (true)//Still need the event to work. On pressing button 'D' moves more far from the center
+            {
+                user.Orbit = -1;
+                string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+                try
+                {
+                    await myhub.SendAsync("orbit", userdata_move);
+                }
+                    //Exception message if something went wrong.
+                catch (Exception ex)
+                {
+                        kiirat.Text = (ex.Message);
+                }
+            }
+            
         }
         private void keringes()
         {
             //default orbiting
-            var sb = FindResource("ellipseSB") as Storyboard;
+            var sb = FindResource("ellipseSB") as Storyboard;           
             if (sb != null) sb.Begin();
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -178,25 +205,33 @@ namespace Projekt
             //Shoot with json code, -1 outside +1 inside shoot.
             User user = new User();
             user.PrivateId = 5201;
-            //későbbi implementálásra:
-            //if (kifelegomb)
-            //{
-            //    user.Shoot = -1;
-            //}
-            //if (befelegomb)
-            //{
-            //    user.Shtoot = 1;
-            //}
-            user.Shoot = 1;
-            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-            try
+            if (true)//On pressing left arrow, the ship shoots to the center
             {
-                await myhub.SendAsync("shoot", userdata_shoot);
+                user.Shoot = 1;
+                string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+                try
+                {
+                    await myhub.SendAsync("shoot", userdata_shoot);
+                }
+                //Exception message if something went wrong.
+                catch (Exception ex)
+                {
+                    kiirat.Text = (ex.Message);
+                }
             }
-            //Exception message if something went wrong.
-            catch (Exception ex)
+            if (true)//On pressing right arrow, the ship shoots outside
             {
-                kiirat.Text = (ex.Message);
+                user.Shoot = -1;
+                string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+                try
+                {
+                    await myhub.SendAsync("shoot", userdata_shoot);
+                }
+                //Exception message if something went wrong.
+                catch (Exception ex)
+                {
+                    kiirat.Text = (ex.Message);
+                }
             }
         }
     }

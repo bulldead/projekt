@@ -24,7 +24,7 @@
                              Storyboard.TargetProperty="Opacity" 
                              From="1" To="0" Duration="00:00:15.000" />
         </Storyboard>
-        <PathGeometry x:Key="path" Figures="M 772,333 A 200,200 0 1 1 772,332.99" />
+        <PathGeometry  x:Key="path" Figures="M 772,333 A 200,200 0 1 1 772,332.99" />
         <Storyboard x:Key="ellipseSB">
             <DoubleAnimationUsingPath Storyboard.TargetName="FriendlyShip"
                                       Storyboard.TargetProperty="(Canvas.Left)"
@@ -77,29 +77,17 @@
         <Image x:Name="Planet" HorizontalAlignment="Left" Height="300" Margin="500,300,0,0" VerticalAlignment="Top" Width="400" Source="Images/planet.png"/>
 
 
-        <Canvas x:Name="GameBack" HorizontalAlignment="Left" Height="779" Margin="80,65,0,0" VerticalAlignment="Top" Width="1170" AutomationProperties.Name="GameBack" RenderTransformOrigin="0.233,0.562">
-            <!--<Ellipse x:Name="ellipse" Width="10" Height="10" Stroke="Black" Fill="Black"
-                     RenderTransformOrigin="0.5,0.5" Canvas.Left="606" Canvas.Top="168" />-->
+        <Canvas x:Name="GameBack" HorizontalAlignment="Left" Height="779" Margin="76,65,0,0" VerticalAlignment="Top" Width="1170" AutomationProperties.Name="GameBack" RenderTransformOrigin="0.233,0.562">
             <Image x:Name="FriendlyShip" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Source="Images/FriendlyShip.png" AutomationProperties.Name="FriendlyShip" Canvas.Left="772" Canvas.Top="333"
                      RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform></RotateTransform>
                 </Image.RenderTransform>
             </Image>
-            <Path Stroke="Red" StrokeThickness="1" Canvas.Left="50.5" Canvas.Top="53"
-                  Data="{StaticResource path}"/>
-            <!--<Ellipse Height="450" Width="450" Canvas.Top="166" Canvas.Left="382" Stroke="LightSlateGray" StrokeThickness="2" />
-            <Image x:Name="FriendlyShip" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Source="Images/FriendlyShip.png" AutomationProperties.Name="FriendlyShip" Canvas.Left="565" Canvas.Top="333">
-                <Image.RenderTransform>
-                    <RotateTransform CenterX="157" CenterY="40" Angle="190" />
-                </Image.RenderTransform>
-            </Image>-->
+            <Path  x:Name="Pathmove" Canvas.Left="125"
+                  Data="{StaticResource path}" Canvas.Top="46" />
         </Canvas>
         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="124" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red" Height="34"/>
-        <!--<Button VerticalAlignment="Bottom" Content="Start" Click="Button_Click">
-        </Button>-->
-
-
 
     </Grid>
 </Window>

@@ -158,7 +158,6 @@
     <Compile Include="Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ship.cs" />
     <Compile Include="User.cs" />
     <Page Include="Game.xaml">
       <SubType>Designer</SubType>

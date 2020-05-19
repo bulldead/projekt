@@ -43,6 +43,14 @@ namespace Projekt
             get { return shoot; }
             set { shoot = value; }
         }
+        private int orbit;
+
+        public int Orbit
+        {
+            get { return orbit; }
+            set { orbit = value; }
+        }
+
 
     }
 }
