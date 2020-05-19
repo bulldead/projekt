@@ -49,31 +49,28 @@
     <Grid x:Name="Scoreboard" AutomationProperties.Name="Scoreboard">
         <TextBlock x:Name="kiirat" HorizontalAlignment="Left" Margin="600,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="600" AutomationProperties.Name="kiirat" Foreground="Red" FontSize="36"/>
         <TextBlock HorizontalAlignment="Left" Margin="1275,757,0,0" TextWrapping="Wrap" Text="Energy" VerticalAlignment="Top" FontSize="36" Height="57" Width="229" Foreground="#FF00DCFF"/>
-        <StatusBar x:Name="EnergyBar" HorizontalAlignment="Left" Height="25" Margin="1275,819,0,0" VerticalAlignment="Top" Width="296" Background="#FF00DCFF" AutomationProperties.Name="EnergyBar">
-            <TextBlock x:Name="EnergyNumber" TextWrapping="Wrap" Width="21" HorizontalAlignment="Center" VerticalAlignment="Center" Text="100" AutomationProperties.Name="EnergyNumber"/>
-        </StatusBar>
         <TextBlock HorizontalAlignment="Left" Margin="1332,10,0,0" TextWrapping="Wrap" Text="Scoreboard" VerticalAlignment="Top" Height="55" Width="221" Foreground="Red" FontSize="36"/>
-        <TextBlock x:Name="Player1" HorizontalAlignment="Left" Margin="1285,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player1"><Run Text="Player 1"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="Player1" HorizontalAlignment="Left" Margin="1285,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player1"><Run Text=""/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="Player2" HorizontalAlignment="Left" Margin="1285,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181
-                   " Foreground="Red" FontSize="24" AutomationProperties.Name="Player2" Text="Player 2"/>
-        <TextBlock x:Name="Player3" HorizontalAlignment="Left" Margin="1285,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player3" Text="Player 3"/>
-        <TextBlock x:Name="Player4" HorizontalAlignment="Left" Margin="1285,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player4" Text="Player 4"/>
-        <TextBlock x:Name="Player5" HorizontalAlignment="Left" Margin="1285,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player5" Text="Player 5"/>
-        <TextBlock x:Name="Player6" HorizontalAlignment="Left" Margin="1285,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player6" Text="Player 6"/>
-        <TextBlock x:Name="Player7" HorizontalAlignment="Left" Margin="1285,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player7" Text="Player 7"/>
-        <TextBlock x:Name="Player8" HorizontalAlignment="Left" Margin="1285,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player8" Text="Player 8"/>
-        <TextBlock x:Name="Player9" HorizontalAlignment="Left" Margin="1285,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player9" Text="Player 9"/>
-        <TextBlock x:Name="Player10" HorizontalAlignment="Left" Margin="1285,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player10" Text="Player 10"/>
-        <TextBlock x:Name="Player1_Score" HorizontalAlignment="Left" Margin="1471,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player1_Score" Text="0"/>
-        <TextBlock x:Name="Player2_Score" HorizontalAlignment="Left" Margin="1471,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player2_Score" Text="0"/>
-        <TextBlock x:Name="Player3_Score" HorizontalAlignment="Left" Margin="1471,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player3_Score" Text="0"/>
-        <TextBlock x:Name="Player4_Score" HorizontalAlignment="Left" Margin="1471,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player4_Score" Text="0"/>
-        <TextBlock x:Name="Player5_Score" HorizontalAlignment="Left" Margin="1471,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player5_Score" Text="0"/>
-        <TextBlock x:Name="Player6_Score" HorizontalAlignment="Left" Margin="1471,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player6_Score" Text="0"/>
-        <TextBlock x:Name="Player7_Score" HorizontalAlignment="Left" Margin="1471,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player7_Score" Text="0"/>
-        <TextBlock x:Name="Player8_Score" HorizontalAlignment="Left" Margin="1471,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player8_Score" Text="0"/>
-        <TextBlock x:Name="Player9_Score" HorizontalAlignment="Left" Margin="1471,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player9_Score" Text="0"/>
-        <TextBlock x:Name="Player10_Score" HorizontalAlignment="Left" Margin="1471,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player10_Score" Text="0"/>
+                   " Foreground="Red" FontSize="24" AutomationProperties.Name="Player2" Text=""/>
+        <TextBlock x:Name="Player3" HorizontalAlignment="Left" Margin="1285,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player3" Text=""/>
+        <TextBlock x:Name="Player4" HorizontalAlignment="Left" Margin="1285,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player4" Text=""/>
+        <TextBlock x:Name="Player5" HorizontalAlignment="Left" Margin="1285,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player5" Text=""/>
+        <TextBlock x:Name="Player6" HorizontalAlignment="Left" Margin="1285,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player6" Text=""/>
+        <TextBlock x:Name="Player7" HorizontalAlignment="Left" Margin="1285,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player7" Text=""/>
+        <TextBlock x:Name="Player8" HorizontalAlignment="Left" Margin="1285,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player8" Text=""/>
+        <TextBlock x:Name="Player9" HorizontalAlignment="Left" Margin="1285,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player9" Text=""/>
+        <TextBlock x:Name="Player10" HorizontalAlignment="Left" Margin="1285,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player10" Text=""/>
+        <TextBlock x:Name="Player1_Score" HorizontalAlignment="Right" Margin="1471,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player1_Score" Text=""/>
+        <TextBlock x:Name="Player2_Score" HorizontalAlignment="Right" Margin="1471,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player2_Score" Text=""/>
+        <TextBlock x:Name="Player3_Score" HorizontalAlignment="Right" Margin="1471,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player3_Score" Text=""/>
+        <TextBlock x:Name="Player4_Score" HorizontalAlignment="Right" Margin="1471,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player4_Score" Text=""/>
+        <TextBlock x:Name="Player5_Score" HorizontalAlignment="Right" Margin="1471,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player5_Score" Text=""/>
+        <TextBlock x:Name="Player6_Score" HorizontalAlignment="Right" Margin="1471,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player6_Score" Text=""/>
+        <TextBlock x:Name="Player7_Score" HorizontalAlignment="Right" Margin="1471,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player7_Score" Text=""/>
+        <TextBlock x:Name="Player8_Score" HorizontalAlignment="Right" Margin="1471,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player8_Score" Text=""/>
+        <TextBlock x:Name="Player9_Score" HorizontalAlignment="Right" Margin="1471,318,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player9_Score" Text=""/>
+        <TextBlock x:Name="Player10_Score" HorizontalAlignment="Right" Margin="1471,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="100" Foreground="Red" FontSize="24" AutomationProperties.Name="Player10_Score" Text=""/>
         <Image x:Name="Planet" HorizontalAlignment="Left" Height="300" Margin="500,300,0,0" VerticalAlignment="Top" Width="400" Source="Images/planet.png"/>
 
 
@@ -88,6 +85,7 @@
                   Data="{StaticResource path}" Canvas.Top="46" />
         </Canvas>
         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="124" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red" Height="34"/>
+        <ProgressBar Margin="1275,814,21,27" Maximum="1000" LargeChange="10" BorderBrush="#FF01DCFF" Value="705" Foreground="#FF00F3FF" Background="#FFFD8989"/>
 
     </Grid>
 </Window>

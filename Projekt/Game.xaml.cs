@@ -30,19 +30,21 @@ namespace Projekt
     {
         HubConnection myhub;
         public List<string> messagesList = new List<string>();
+        public List<Ship> ships_data = new List<Ship>();
         public Game()
         {
             InitializeComponent();
             kiirat.Text = "Waiting on server response.";
-            connect();
+            connect();            
             usermake();
-            broadcast();            
+            broadcast();
             keringes();
             shipmove();
             shoot();
-            
-            
+
+
         }
+
         private async void connect()
         {
             myhub = new HubConnectionBuilder()
@@ -75,7 +77,7 @@ namespace Projekt
             //User data
             User user = new User();
             user.Name = "Rikka";
-            user.PublicId = 432;
+            user.PublicId = 43242;
             user.Group = 4242;
             user.PrivateId = 5201;
             //serialize to json
@@ -114,9 +116,10 @@ namespace Projekt
                     //Adding to list
                     messagesList.Add(newMessage);
                     //convert it to string
-                    string message_part = Convert.ToString(newMessage);
+                    string message_part1 = Convert.ToString(newMessage);
                     string message_part2 = Convert.ToString(user);
-                    string path = @"test.txt";
+                    string path = @"test.txt"; 
+                    string path_ships = @"test1.txt";
                     using (FileStream fs = new FileStream(path, FileMode.Create))
                     {
                         using (var tofile = new StreamWriter(fs))
@@ -126,6 +129,75 @@ namespace Projekt
                             tofile.Close();
                         }
                     }
+                    //Testing to get the data
+                    ships_data = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Ship>>(message);
+                    //Player point writer
+                    using (TextWriter tw = new StreamWriter(path_ships))
+                    {
+                        for (int i = 0; i < ships_data.Count; i++)
+                        {   
+                            tw.WriteLine(string.Format("Points: {0}", ships_data[i].Points.ToString()));
+                            
+                            if (i == 0)
+                            {
+                                Player1.Text = "Player1";
+                                Player1_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 1)
+                            {
+                                Player2.Text = "Player2";
+                                Player2_Score.Text= ships_data[i].Points.ToString();
+                            }
+                            if (i == 2)
+                            {
+                                Player3.Text = "Player3";
+                                Player3_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 3)
+                            {
+                                Player4.Text = "Player4";
+                                Player4_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 4)
+                            {
+                                Player5.Text = "Player5";
+                                Player5_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 5)
+                            {
+                                Player6.Text = "Player6";
+                                Player6_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 6)
+                            {
+                                Player7.Text = "Player7";
+                                Player7_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 7)
+                            {
+                                Player8.Text = "Player8";
+                                Player8_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 8)
+                            {
+                                Player9.Text = "Player9";
+                                Player9_Score.Text = ships_data[i].Points.ToString();
+                            }
+                            if (i == 9)
+                            {
+                                Player10.Text = "Player10";
+                                Player10_Score.Text = ships_data[i].Points.ToString();
+                            }
+                        }
+
+                        //foreach (var item in ships_data)
+                        //{
+                           
+                        //    tw.WriteLine(string.Format("Points: {0}", item.Points.ToString()));                            
+                         
+                        //}
+                    }
+                    
                 });
             });
         }
@@ -234,5 +306,6 @@ namespace Projekt
                 }
             }
         }
+
     }
 }
