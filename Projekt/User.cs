@@ -37,19 +37,6 @@ namespace Projekt
             get { return privateid; }
             set { privateid = value; }
         }
-        private int shoot;
-        public int Shoot
-        {
-            get { return shoot; }
-            set { shoot = value; }
-        }
-        private int orbit;
-
-        public int Orbit
-        {
-            get { return orbit; }
-            set { orbit = value; }
-        }
 
 
     }

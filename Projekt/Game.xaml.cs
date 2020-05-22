@@ -19,6 +19,9 @@ using System.Threading;
 using System.Windows.Media.Media3D;
 using System.Windows.Media.Animation;
 using System.Windows.Documents.DocumentStructures;
+using System.Windows.Markup;
+using Path = System.Windows.Shapes.Path;
+using Point = System.Windows.Point;
 
 namespace Projekt
 
@@ -34,13 +37,13 @@ namespace Projekt
         public Game()
         {
             InitializeComponent();
-            kiirat.Text = "Waiting on server response.";
-            connect();            
-            usermake();
-            broadcast();
-            keringes();
+            kiirat.Text = "Waiting on server response.";            
+            connect();
             shipmove();
-            shoot();
+            //usermake();
+            broadcast();
+            keringes();            
+            //shoot();
 
 
         }
@@ -201,45 +204,16 @@ namespace Projekt
                 });
             });
         }
-        private async void shipmove()
+        private  void shipmove()
         {
 
             User user = new User();
             user.PrivateId = 5201;
-            //move testing
-            //PathGeometry path = new PathGeometry();            
-            //Pathmove.SetValue(Canvas.LeftProperty,400.0);
-            //Pathmove.SetValue(Canvas.TopProperty, 40.0);
-
-            if (true)//Still need the event to work. On pressing button 'A' moves closer to the center
-            {
-                user.Orbit = 1;
-                string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-                try
-                {
-                    await myhub.SendAsync("orbit", userdata_move);
-                }
-                //Exception message if something went wrong.
-                catch (Exception ex)
-                {
-                    kiirat.Text = (ex.Message);
-                }
-            }            
-            
-            if (true)//Still need the event to work. On pressing button 'D' moves more far from the center
-            {
-                user.Orbit = -1;
-                string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-                try
-                {
-                    await myhub.SendAsync("orbit", userdata_move);
-                }
-                    //Exception message if something went wrong.
-                catch (Exception ex)
-                {
-                        kiirat.Text = (ex.Message);
-                }
-            }
+            //making orbit circle bigger
+            var pm = FindResource("path") as PathGeometry;
+            pm.Clear();
+            string a = "M 850,333 A 250,250 0 1 1 850,332.99";
+            pm.AddGeometry(StreamGeometry.Parse(a));                     
             
         }
         private void keringes()
@@ -279,7 +253,7 @@ namespace Projekt
             user.PrivateId = 5201;
             if (true)//On pressing left arrow, the ship shoots to the center
             {
-                user.Shoot = 1;
+                //user.Shoot = 1;
                 string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
                 try
                 {
@@ -293,7 +267,7 @@ namespace Projekt
             }
             if (true)//On pressing right arrow, the ship shoots outside
             {
-                user.Shoot = -1;
+                //user.Shoot = -1;
                 string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
                 try
                 {
@@ -307,5 +281,12 @@ namespace Projekt
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var pm = FindResource("path") as PathGeometry;
+            pm.Clear();
+            string a = "M 750,333 A 150,150 0 1 1 750,332.99";
+            pm.AddGeometry(StreamGeometry.Parse(a));
+        }
     }
 }

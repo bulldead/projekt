@@ -1,2 +1,2 @@
-Normal_38085.3224638_: [{"PublicId":271205,"Angle":"0.139","Distance":40,"Velocity":"0.497","Points":-264,"Energy":1000},{"PublicId":75321,"Angle":"4.341","Distance":21,"Velocity":"1.306","Points":-391,"Energy":1000},{"PublicId":4444,"Angle":"4.005","Distance":45,"Velocity":"0.416","Points":17,"Energy":1000},{"PublicId":545,"Angle":"2.703","Distance":24,"Velocity":"1.069","Points":20,"Energy":1000}]
-Normal_38085.3224638_
+Normal_60011.4343073_: [{"PublicId":4444,"Angle":"2.267","Distance":27,"Velocity":"0.896","Points":17,"Energy":1000},{"PublicId":222,"Angle":"1.663","Distance":7,"Velocity":"6.785","Points":23,"Energy":800}]
+Normal_60011.4343073_

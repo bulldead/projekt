@@ -1,4 +1,2 @@
-Points: -264
-Points: -391
 Points: 17
-Points: 20
+Points: 23

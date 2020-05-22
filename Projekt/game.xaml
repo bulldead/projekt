@@ -15,7 +15,7 @@
             </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
-    <Window.Resources>
+    <Window.Resources >
         <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:15.000">
             <DoubleAnimation Storyboard.TargetName="FriendlyShip" 
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" 
@@ -25,7 +25,8 @@
                              From="1" To="0" Duration="00:00:15.000" />
         </Storyboard>
         <PathGeometry  x:Key="path" Figures="M 772,333 A 200,200 0 1 1 772,332.99" />
-        <Storyboard x:Key="ellipseSB">
+        <Storyboard x:Key="ellipseSB" >
+
             <DoubleAnimationUsingPath Storyboard.TargetName="FriendlyShip"
                                       Storyboard.TargetProperty="(Canvas.Left)"
                                       PathGeometry="{StaticResource path}"
@@ -46,9 +47,9 @@
         </Storyboard>
 
     </Window.Resources>
-    <Grid x:Name="Scoreboard" AutomationProperties.Name="Scoreboard">
+    <Grid x:Name="Scoreboard" AutomationProperties.Name="Scoreboard" >
         <TextBlock x:Name="kiirat" HorizontalAlignment="Left" Margin="600,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="600" AutomationProperties.Name="kiirat" Foreground="Red" FontSize="36"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1275,757,0,0" TextWrapping="Wrap" Text="Energy" VerticalAlignment="Top" FontSize="36" Height="57" Width="229" Foreground="#FF00DCFF"/>
+        <TextBlock x:Name="EnergyText" HorizontalAlignment="Left" Margin="1275,757,0,0" TextWrapping="Wrap" Text="Energy" VerticalAlignment="Top" FontSize="36" Height="57" Width="229" Foreground="#FF00DCFF" AutomationProperties.Name="EnergyText"/>
         <TextBlock HorizontalAlignment="Left" Margin="1332,10,0,0" TextWrapping="Wrap" Text="Scoreboard" VerticalAlignment="Top" Height="55" Width="221" Foreground="Red" FontSize="36"/>
         <TextBlock x:Name="Player1" HorizontalAlignment="Left" Margin="1285,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181" Foreground="Red" FontSize="24" AutomationProperties.Name="Player1"><Run Text=""/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="Player2" HorizontalAlignment="Left" Margin="1285,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="181
@@ -81,11 +82,10 @@
                     <RotateTransform></RotateTransform>
                 </Image.RenderTransform>
             </Image>
-            <Path  x:Name="Pathmove" Canvas.Left="125"
-                  Data="{StaticResource path}" Canvas.Top="46" />
         </Canvas>
         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="124" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red" Height="34"/>
         <ProgressBar Margin="1275,814,21,27" Maximum="1000" LargeChange="10" BorderBrush="#FF01DCFF" Value="705" Foreground="#FF00F3FF" Background="#FFFD8989"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,710,0,0" VerticalAlignment="Top" Width="228" Height="132" Click="Button_Click"/>
 
     </Grid>
 </Window>
