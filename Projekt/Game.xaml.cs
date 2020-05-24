@@ -37,12 +37,12 @@ namespace Projekt
         public Game()
         {
             InitializeComponent();
-            kiirat.Text = "Waiting on server response.";            
+            kiirat.Text = "Waiting on server response.";
             connect();
             shipmove();
             usermake();
             broadcast();
-            keringes();                       
+            keringes();
         }
 
         private async void connect()
@@ -71,7 +71,7 @@ namespace Projekt
             {
                 kiirat.Text = (ex.Message);
             }
-        }        
+        }
         private async void usermake()
         {
             //User data
@@ -94,7 +94,7 @@ namespace Projekt
             }
             try
             {
-                await myhub.InvokeAsync("SendMessage","user",userdata);               
+                await myhub.InvokeAsync("SendMessage", "user", userdata);
 
             }
             //Exception message if something went wrong.
@@ -201,11 +201,11 @@ namespace Projekt
                             tw.WriteLine(string.Format("PublicId: {0}", ships_data[i].PublicId.ToString()));
 
                         }
-                    }  
+                    }
                 });
             });
         }
-        private  void shipmove()
+        private void shipmove()
         {
 
             User user = new User();
@@ -214,13 +214,13 @@ namespace Projekt
             var pm = FindResource("path") as PathGeometry;
             pm.Clear();
             string a = "M 850,333 A 250,250 0 1 1 850,332.99";
-            pm.AddGeometry(StreamGeometry.Parse(a));                     
-            
+            pm.AddGeometry(StreamGeometry.Parse(a));
+
         }
         private void keringes()
         {
             //default orbiting
-            var sb = FindResource("ellipseSB") as Storyboard;           
+            var sb = FindResource("ellipseSB") as Storyboard;
             if (sb != null) sb.Begin();
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -263,7 +263,7 @@ namespace Projekt
             }
             Energy_Number.Text = Convert.ToString(Energybar.Value);
         }
-        private async void Move_Left_Click(object sender, RoutedEventArgs e)
+        private async void move_left()
         {
             var pm = FindResource("path") as PathGeometry;
             pm.Clear();
@@ -273,7 +273,7 @@ namespace Projekt
             if (sb != null) sb.Begin();
             User user = new User();
             user.Orbit = -1;
-            user.PrivateId = 5201;     
+            user.PrivateId = 5201;
             string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
             try
             {
@@ -286,7 +286,7 @@ namespace Projekt
             }
             move_energy();
         }
-        private async void Move_Right_Click(object sender, RoutedEventArgs e)
+        private async void move_right()
         {
             var pm = FindResource("path") as PathGeometry;
             pm.Clear();
@@ -309,24 +309,7 @@ namespace Projekt
             }
             move_energy();
         }
-        private async void Shoot_Out_Click(object sender, RoutedEventArgs e)
-        {            
-            User user = new User();
-            user.Shoot = 1;
-            user.PrivateId = 5201;
-            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-            try
-            {
-                await myhub.SendAsync("SendMessage", "shoot", userdata_shoot);
-            }
-            //Exception message if something went wrong.
-            catch (Exception ex)
-            {
-                kiirat.Text = (ex.Message);
-            }
-            shoot_energy();
-        }
-        private async void Shoot_In_Click(object sender, RoutedEventArgs e)
+        private async void shoot_left()
         {
             //user.Shoot = 1;
             User user = new User();
@@ -342,6 +325,50 @@ namespace Projekt
                 kiirat.Text = (ex.Message);
             }
             shoot_energy();
+        }
+        private async void shoot_right()
+        {
+            User user = new User();
+            user.Shoot = 1;
+            user.PrivateId = 5201;
+            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "shoot", userdata_shoot);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            shoot_energy();
+        }
+        private void robot_pilot()
+        {
+            //while (Energybar.Value>0)
+            //{
+
+            //}
+        }
+        private void Move_Left_Click(object sender, RoutedEventArgs e)
+        {
+            move_left();
+        }
+        private void Move_Right_Click(object sender, RoutedEventArgs e)
+        {
+            move_right();
+        }
+        private void Shoot_Out_Click(object sender, RoutedEventArgs e)
+        {
+            shoot_right();
+        }
+        private void Shoot_In_Click(object sender, RoutedEventArgs e)
+        {
+            shoot_left();
+        }
+        private void AutoPlay_Click(object sender, RoutedEventArgs e)
+        {
+            robot_pilot();
         }
     }
 }
