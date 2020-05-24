@@ -40,12 +40,9 @@ namespace Projekt
             kiirat.Text = "Waiting on server response.";            
             connect();
             shipmove();
-            //usermake();
+            usermake();
             broadcast();
-            keringes();            
-            //shoot();
-
-
+            keringes();                       
         }
 
         private async void connect()
@@ -80,7 +77,7 @@ namespace Projekt
             //User data
             User user = new User();
             user.Name = "Rikka";
-            user.PublicId = 43242;
+            user.PublicId = 4324;
             user.Group = 4242;
             user.PrivateId = 5201;
             //serialize to json
@@ -97,8 +94,8 @@ namespace Projekt
             }
             try
             {
-                //await myhub.InvokeAsync("user", userdata);
-                await myhub.SendAsync("user", userdata);
+                await myhub.InvokeAsync("SendMessage","user",userdata);               
+
             }
             //Exception message if something went wrong.
             catch (Exception ex)
@@ -121,8 +118,9 @@ namespace Projekt
                     //convert it to string
                     string message_part1 = Convert.ToString(newMessage);
                     string message_part2 = Convert.ToString(user);
-                    string path = @"test.txt"; 
-                    string path_ships = @"test1.txt";
+                    string path = @"message_test.txt";
+                    string ship_points = @"point_test.txt";
+                    string ship_ids = @"ids_test.txt";
                     using (FileStream fs = new FileStream(path, FileMode.Create))
                     {
                         using (var tofile = new StreamWriter(fs))
@@ -135,12 +133,12 @@ namespace Projekt
                     //Testing to get the data
                     ships_data = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Ship>>(message);
                     //Player point writer
-                    using (TextWriter tw = new StreamWriter(path_ships))
+                    using (TextWriter tw = new StreamWriter(ship_points))
                     {
                         for (int i = 0; i < ships_data.Count; i++)
-                        {   
+                        {
                             tw.WriteLine(string.Format("Points: {0}", ships_data[i].Points.ToString()));
-                            
+
                             if (i == 0)
                             {
                                 Player1.Text = "Player1";
@@ -149,7 +147,7 @@ namespace Projekt
                             if (i == 1)
                             {
                                 Player2.Text = "Player2";
-                                Player2_Score.Text= ships_data[i].Points.ToString();
+                                Player2_Score.Text = ships_data[i].Points.ToString();
                             }
                             if (i == 2)
                             {
@@ -193,14 +191,17 @@ namespace Projekt
                             }
                         }
 
-                        //foreach (var item in ships_data)
-                        //{
-                           
-                        //    tw.WriteLine(string.Format("Points: {0}", item.Points.ToString()));                            
-                         
-                        //}
                     }
-                    
+                    using (TextWriter tw = new StreamWriter(ship_ids))
+                    {
+                        User user1 = new User();
+                        user1.PublicId = 4324;
+                        for (int i = 0; i < ships_data.Count; i++)
+                        {
+                            tw.WriteLine(string.Format("PublicId: {0}", ships_data[i].PublicId.ToString()));
+
+                        }
+                    }  
                 });
             });
         }
@@ -238,7 +239,7 @@ namespace Projekt
             string userdata_exit = Newtonsoft.Json.JsonConvert.SerializeObject(user);
             try
             {
-                await myhub.SendAsync("exit", userdata_exit);
+                await myhub.SendAsync("SendMessage", "exit", userdata_exit);
             }
             //Exception message if something went wrong.
             catch (Exception ex)
@@ -246,47 +247,101 @@ namespace Projekt
                 kiirat.Text = (ex.Message);
             }
         }
-        private async void shoot()
+        private void move_energy()
         {
-            //Shoot with json code, -1 outside +1 inside shoot.
-            User user = new User();
-            user.PrivateId = 5201;
-            if (true)//On pressing left arrow, the ship shoots to the center
+            for (int i = 0; i < 10; i++)
             {
-                //user.Shoot = 1;
-                string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-                try
-                {
-                    await myhub.SendAsync("shoot", userdata_shoot);
-                }
-                //Exception message if something went wrong.
-                catch (Exception ex)
-                {
-                    kiirat.Text = (ex.Message);
-                }
+                Energybar.Value--;
             }
-            if (true)//On pressing right arrow, the ship shoots outside
-            {
-                //user.Shoot = -1;
-                string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
-                try
-                {
-                    await myhub.SendAsync("shoot", userdata_shoot);
-                }
-                //Exception message if something went wrong.
-                catch (Exception ex)
-                {
-                    kiirat.Text = (ex.Message);
-                }
-            }
+            Energy_Number.Text = Convert.ToString(Energybar.Value);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void shoot_energy()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Energybar.Value--;
+            }
+            Energy_Number.Text = Convert.ToString(Energybar.Value);
+        }
+        private async void Move_Left_Click(object sender, RoutedEventArgs e)
         {
             var pm = FindResource("path") as PathGeometry;
             pm.Clear();
             string a = "M 750,333 A 150,150 0 1 1 750,332.99";
             pm.AddGeometry(StreamGeometry.Parse(a));
+            var sb = FindResource("ellipseSB") as Storyboard;
+            if (sb != null) sb.Begin();
+            User user = new User();
+            user.Orbit = -1;
+            user.PrivateId = 5201;     
+            string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "exit", userdata_move);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            move_energy();
+        }
+        private async void Move_Right_Click(object sender, RoutedEventArgs e)
+        {
+            var pm = FindResource("path") as PathGeometry;
+            pm.Clear();
+            string a = "M 850,333 A 250,250 0 1 1 850,332.99";
+            pm.AddGeometry(StreamGeometry.Parse(a));
+            var sb = FindResource("ellipseSB") as Storyboard;
+            if (sb != null) sb.Begin();
+            User user = new User();
+            user.Orbit = 1;
+            user.PrivateId = 5201;
+            string userdata_move = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "exit", userdata_move);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            move_energy();
+        }
+        private async void Shoot_Out_Click(object sender, RoutedEventArgs e)
+        {            
+            User user = new User();
+            user.Shoot = 1;
+            user.PrivateId = 5201;
+            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "shoot", userdata_shoot);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            shoot_energy();
+        }
+        private async void Shoot_In_Click(object sender, RoutedEventArgs e)
+        {
+            //user.Shoot = 1;
+            User user = new User();
+            user.PrivateId = 5201;
+            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "shoot", userdata_shoot);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            shoot_energy();
         }
     }
 }

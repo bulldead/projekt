@@ -1,2 +1,0 @@
-Normal_60011.4343073_: [{"PublicId":4444,"Angle":"2.267","Distance":27,"Velocity":"0.896","Points":17,"Energy":1000},{"PublicId":222,"Angle":"1.663","Distance":7,"Velocity":"6.785","Points":23,"Energy":800}]
-Normal_60011.4343073_

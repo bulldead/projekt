@@ -84,8 +84,12 @@
             </Image>
         </Canvas>
         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="124" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red" Height="34"/>
-        <ProgressBar Margin="1275,814,21,27" Maximum="1000" LargeChange="10" BorderBrush="#FF01DCFF" Value="705" Foreground="#FF00F3FF" Background="#FFFD8989"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,710,0,0" VerticalAlignment="Top" Width="228" Height="132" Click="Button_Click"/>
+        <ProgressBar x:Name="Energybar" Margin="1275,814,21,27" Maximum="1000" LargeChange="10" BorderBrush="#FF01DCFF" Value="1000" Foreground="#FF00F3FF" Background="#FFFD8989" AutomationProperties.Name="Energybar" SmallChange="3"/>
+        <Button x:Name="Move_Left" Content="Left" HorizontalAlignment="Left" Margin="10,784,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="24" Click="Move_Left_Click"/>
+        <Button x:Name="Move_Right" Content="Right" HorizontalAlignment="Left" Margin="160,784,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="24" Click="Move_Right_Click"/>
+        <Button x:Name="Shoot_In" Content="Shoot In" HorizontalAlignment="Left" Margin="10,705,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="22" Click="Shoot_In_Click"/>
+        <Button x:Name="Shoot_Out" Content="Shoot Out" HorizontalAlignment="Left" Margin="160,705,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="22" Click="Shoot_Out_Click"/>
+        <TextBlock x:Name="Energy_Number" HorizontalAlignment="Left" Margin="1392,819,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="74" AutomationProperties.Name="Energy_Number"/>
 
     </Grid>
 </Window>
