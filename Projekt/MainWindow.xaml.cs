@@ -72,7 +72,7 @@ namespace Projekt
         private void HighScores_Click(object sender, RoutedEventArgs e)
         {
             HighScore.Text = "Highscores";
-            string data = File.ReadAllText("ids_test.txt");
+            string data = File.ReadAllText("highscores.txt");
             connect_test.Text = data;
         }
     }

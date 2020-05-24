@@ -47,7 +47,7 @@ namespace Projekt
             connect();
             usermake();
             broadcast();
-            keringes();            
+            keringes();             
         }
 
         private async void connect()
@@ -125,7 +125,7 @@ namespace Projekt
                     string message_part2 = Convert.ToString(user);
                     string message_test = @"message_test.txt";
                     string ship_points = @"point_test.txt";
-                    string ship_ids = @"ids_test.txt";
+                    
                     using (FileStream fs = new FileStream(message_test, FileMode.Create))
                     {
                         using (var tofile = new StreamWriter(fs))
@@ -197,20 +197,7 @@ namespace Projekt
                         }
 
                     }
-                    using (TextWriter tw = new StreamWriter(ship_ids,true))
-                    {
-                        User user1 = new User();
-                        user1.PublicId = 4324;
-                        for (int i = 0; i < ships_data.Count; i++)
-                        {
-                            
-                            string test123 = string.Format("PublicId: {0}", ships_data[i].PublicId.ToString());
-                            if (test123 == "PublicId: 4324")
-                            {
-                                tw.WriteLine(string.Format("Points: {0}", ships_data[i].Points.ToString()));
-                            }
-                        }
-                    }
+                   
                 });
             });
         }
@@ -222,7 +209,22 @@ namespace Projekt
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            //exits to main screen
+            //exits to main screen and saves score
+            string highscores = @"highscores.txt";
+            using (TextWriter tw = new StreamWriter(highscores, true))
+            {
+                User user1 = new User();
+                user1.PublicId = 4324;
+                for (int i = 0; i < ships_data.Count; i++)
+                {
+
+                    string test123 = string.Format("PublicId: {0}", ships_data[i].PublicId.ToString());
+                    if (test123 == "PublicId: 4324")
+                    {
+                        tw.WriteLine(string.Format("Points: {0}", ships_data[i].Points.ToString()));
+                    }
+                }
+            }
             game_exit();
             MainWindow main = new MainWindow();
             main.Show();
