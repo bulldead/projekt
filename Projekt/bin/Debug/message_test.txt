@@ -1,2 +1,2 @@
-exit: {"PublicId":4324}
-exit
+Normal_77811.0895065_: [{"PublicId":443413,"Angle":"3.423","Distance":32,"Velocity":"0.694","Points":-13,"Energy":1000},{"PublicId":1212020,"Angle":"0.998","Distance":12,"Velocity":"3.023","Points":-14,"Energy":1000},{"PublicId":2,"Angle":"2.418","Distance":32,"Velocity":"0.694","Points":-32,"Energy":982}]
+Normal_77811.0895065_

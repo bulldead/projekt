@@ -1,4 +1,3 @@
-Points: -2
-Points: -5
-Points: 19
-Points: 20
+Points: -13
+Points: -14
+Points: -32

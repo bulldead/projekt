@@ -22,6 +22,10 @@ using System.Windows.Documents.DocumentStructures;
 using System.Windows.Markup;
 using Path = System.Windows.Shapes.Path;
 using Point = System.Windows.Point;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Projekt
 
@@ -34,15 +38,16 @@ namespace Projekt
         HubConnection myhub;
         public List<string> messagesList = new List<string>();
         public List<Ship> ships_data = new List<Ship>();
+        
+
         public Game()
         {
             InitializeComponent();
             kiirat.Text = "Waiting on server response.";
             connect();
-            shipmove();
             usermake();
             broadcast();
-            keringes();
+            keringes();            
         }
 
         private async void connect()
@@ -118,10 +123,10 @@ namespace Projekt
                     //convert it to string
                     string message_part1 = Convert.ToString(newMessage);
                     string message_part2 = Convert.ToString(user);
-                    string path = @"message_test.txt";
+                    string message_test = @"message_test.txt";
                     string ship_points = @"point_test.txt";
                     string ship_ids = @"ids_test.txt";
-                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    using (FileStream fs = new FileStream(message_test, FileMode.Create))
                     {
                         using (var tofile = new StreamWriter(fs))
                         {
@@ -192,30 +197,22 @@ namespace Projekt
                         }
 
                     }
-                    using (TextWriter tw = new StreamWriter(ship_ids))
+                    using (TextWriter tw = new StreamWriter(ship_ids,true))
                     {
                         User user1 = new User();
                         user1.PublicId = 4324;
                         for (int i = 0; i < ships_data.Count; i++)
                         {
-                            tw.WriteLine(string.Format("PublicId: {0}", ships_data[i].PublicId.ToString()));
-
+                            
+                            string test123 = string.Format("PublicId: {0}", ships_data[i].PublicId.ToString());
+                            if (test123 == "PublicId: 4324")
+                            {
+                                tw.WriteLine(string.Format("Points: {0}", ships_data[i].Points.ToString()));
+                            }
                         }
                     }
                 });
             });
-        }
-        private void shipmove()
-        {
-
-            User user = new User();
-            user.PrivateId = 5201;
-            //making orbit circle bigger
-            var pm = FindResource("path") as PathGeometry;
-            pm.Clear();
-            string a = "M 850,333 A 250,250 0 1 1 850,332.99";
-            pm.AddGeometry(StreamGeometry.Parse(a));
-
         }
         private void keringes()
         {
@@ -311,8 +308,9 @@ namespace Projekt
         }
         private async void shoot_left()
         {
-            //user.Shoot = 1;
+            //user.Shoot = -1;
             User user = new User();
+            user.Shoot = -1;
             user.PrivateId = 5201;
             string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
             try
@@ -345,10 +343,35 @@ namespace Projekt
         }
         private void robot_pilot()
         {
-            //while (Energybar.Value>0)
-            //{
-
-            //}
+            Random rnd = new Random();
+            int random = 0;
+                random = rnd.Next(1, 100);
+                if (random % 2 == 0)
+                {
+                    move_left();
+                    random = rnd.Next(1, 100);
+                    if (random % 2 == 0)
+                    {
+                        shoot_left();
+                    }
+                    else
+                    {
+                        shoot_right();                        
+                    }
+                }
+                else
+                {
+                    move_right();
+                    random = rnd.Next(1, 100);
+                    if (random % 2 == 0)
+                    {
+                        shoot_left();
+                    }
+                    else
+                    {
+                        shoot_right();
+                    }
+                }
         }
         private void Move_Left_Click(object sender, RoutedEventArgs e)
         {
@@ -367,8 +390,26 @@ namespace Projekt
             shoot_left();
         }
         private void AutoPlay_Click(object sender, RoutedEventArgs e)
+        {            
+                robot_pilot();          
+        }
+        private async void Shoot_Test_Click(object sender, RoutedEventArgs e)
         {
-            robot_pilot();
+            //For testing, shoots own ship.
+            User user = new User();
+            user.Shoot = 0;
+            user.PrivateId = 5201;
+            string userdata_shoot = Newtonsoft.Json.JsonConvert.SerializeObject(user);
+            try
+            {
+                await myhub.SendAsync("SendMessage", "shoot", userdata_shoot);
+            }
+            //Exception message if something went wrong.
+            catch (Exception ex)
+            {
+                kiirat.Text = (ex.Message);
+            }
+            shoot_energy();
         }
     }
 }

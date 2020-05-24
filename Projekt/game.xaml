@@ -91,6 +91,7 @@
         <Button x:Name="Shoot_Out" Content="Shoot Out" HorizontalAlignment="Left" Margin="160,705,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="22" Click="Shoot_Out_Click"/>
         <TextBlock x:Name="Energy_Number" HorizontalAlignment="Left" Margin="1392,819,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Width="74" AutomationProperties.Name="Energy_Number"/>
         <Button x:Name="AutoPlay" Content="Auto Play" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="145"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="22" AutomationProperties.Name="AutoPlay" Click="AutoPlay_Click"/>
+        <Button x:Name="Shoot_Test" Content="Test Shoot" HorizontalAlignment="Left" Margin="76,628,0,0" VerticalAlignment="Top" Width="162"  Background="Black" Foreground="White" BorderBrush="Red" Height="50" FontSize="22" AutomationProperties.Name="Shoot_Test" Click="Shoot_Test_Click"/>
 
     </Grid>
 </Window>

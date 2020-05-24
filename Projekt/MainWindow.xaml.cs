@@ -24,8 +24,9 @@ namespace Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        //server connection variable
         
+        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -65,6 +66,14 @@ namespace Projekt
                     tofile.Close();
                 }
             }
-        }        
+        }
+
+
+        private void HighScores_Click(object sender, RoutedEventArgs e)
+        {
+            HighScore.Text = "Highscores";
+            string data = File.ReadAllText("ids_test.txt");
+            connect_test.Text = data;
+        }
     }
 }

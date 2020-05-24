@@ -1,4 +1,2 @@
-PublicId: 443413
-PublicId: 1212020
-PublicId: 2
-PublicId: 4324
+Points: 43
+Points: 20

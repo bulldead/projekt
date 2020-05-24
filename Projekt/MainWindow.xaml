@@ -23,8 +23,10 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="91,39,0,0" VerticalAlignment="Top" Width="75" Click="Connect_Click" AutomationProperties.Name="Disconnect" Background="Black" Foreground="White" BorderBrush="Red"/>
         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="91,214,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Exit" Click="Exit_Click" Background="Black" Foreground="White" BorderBrush="Red"/>
-        <TextBlock x:Name="connect_test" Grid.Column="1" HorizontalAlignment="Left" Margin="161,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="178" Width="374" FontSize="36" Foreground="#FFFF0E0E" AutomationProperties.Name="connect_test"/>
+        <TextBlock x:Name="connect_test"   Grid.Column="1" HorizontalAlignment="Left" Margin="302,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="341" Width="182" Foreground="#FFFF0E0E" AutomationProperties.Name="connect_test" FontSize="18"/>
         <TextBlock x:Name="counting" HorizontalAlignment="Left" Margin="0,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="493" Foreground="#FF0051FD" AutomationProperties.Name="counting" Grid.ColumnSpan="2" FontSize="16"/>
+        <Button x:Name="HighScores" Content="High Scores" HorizontalAlignment="Left" Margin="91,119,0,0" VerticalAlignment="Top" Width="75" AutomationProperties.Name="Highscores" Background="Black" Foreground="White" BorderBrush="Red" Click="HighScores_Click"/>
+        <TextBlock x:Name="HighScore"   Grid.Column="1" HorizontalAlignment="Center" Margin="331,34,118,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="133" Foreground="#FFFF0E0E" AutomationProperties.Name="HighScore" FontSize="24"/>
 
     </Grid>
 </Window>
